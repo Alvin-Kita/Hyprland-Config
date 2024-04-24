@@ -1,0 +1,211 @@
+/*********************
+ * GLOBAL
+**********************/
+
+* {
+    font-family: FontAwesome,FontAwesome6, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    min-height: 0;
+    margin: 1px;
+}
+
+
+
+window#waybar {
+    background: none;
+}
+
+#workspaces,
+#window,
+#clock,
+#tray,
+#mdp,
+#pulseaudio,
+#backlight,
+#network,
+#power-profiles-daemon,
+#cpu,
+#memory,
+#temperature,
+#keyboard-state,
+#battery{
+    background-color: #313244;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/*********************
+ * WORKSPACES
+**********************/
+
+#workspaces button {
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #b4befe;
+}
+
+#workspaces button.active {
+    color: #a6e3a1;
+}
+
+#workspaces button.urgent {
+    color: #b4befe;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+/*********************
+ * WINDOWS, CLOCK
+**********************/
+
+#window,
+#clock {
+    color: #b4befe;
+}
+
+
+
+/*********************
+ * TRAY
+**********************/
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+/*********************
+ * PULSEAUDIO, BACKLIGHT
+**********************/
+
+#pulseaudio,
+#backlight {
+    color: #f9e2af;
+}
+
+#pulseaudio.muted {
+    background-color: #585b70;
+}
+
+/*********************
+ * NETWORK
+**********************/
+
+#network {
+    color: #74c7ec;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+/*********************
+ * POWER-PROFILES
+**********************/
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    padding-right: 12px;
+    padding-left: 12px;
+    color: #f38ba8;
+}
+
+#power-profiles-daemon.balanced {
+    padding-right: 7px;
+    padding-left: 7px;
+    color: #74c7ec;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #a6e3a1;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+
+
+/*********************
+ * CPU, TEMPERATURE
+**********************/
+
+#cpu,
+#memory,
+#temperature{
+    color: #cba6f7;
+}
+
+#temperature.critical {
+    color: #f38ba8;
+}
+
+/*********************
+ * KEYBOARD-STATE
+**********************/
+
+#keyboard-state {
+    color: #94e2d5;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    color: #f9e2af;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 15px
+}
+
+/*********************
+ * BATTERY
+**********************/
+
+#battery {
+    background-color: #313244;
+    color: #b4befe;
+}
+
+#battery.charging, #battery.plugged {
+    background-color: #313244;
+    color: #a6e3a1;
+
+}
+
+#battery.warning:not(.charging) {
+    background-color: #313244;
+    color: #fab387;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f38ba8;
+        color: #b4befe;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #313244;
+    color: #b4befe;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
